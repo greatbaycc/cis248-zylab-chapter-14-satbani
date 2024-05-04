@@ -5,19 +5,24 @@ import java.util.InputMismatchException;
 
 public class NameAgeChecker {
    public static void main(String[] args) {
-      Scanner scanner = new Scanner(System.in);
+      Scanner scnr = new Scanner(System.in);
 
       String inputName;
       int age;
-
-      inputName = scanner.next();
+      
+      inputName = scnr.next();
       while (!inputName.equals("-1")) {
          // FIXME: The following line will throw an InputMismatchException.
          //        Insert a try/catch statement to catch the exception.
-         age = scanner.nextInt();
+         try {
+         age = scnr.nextInt();
          System.out.println(inputName + " " + (age + 1));
-
-         inputName = scanner.next();
+         } 
+         catch (InputMismatchException e) {
+            System.out.println(inputName + " 0");
+            scnr.nextLine();
+         }
+         inputName = scnr.next();
       }
    }
 }
