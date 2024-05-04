@@ -7,16 +7,21 @@ import java.io.IOException;
 
 public class LabProgram {
    public static void main(String[] args) throws IOException {
-      Scanner scanner = new Scanner(System.in);
+      Scanner scnr = new Scanner(System.in);
 
-      // Declare required variables
-
-      // Read the name of the input file
-
-      // Open the input file
-
-      // For each line of the input file, read the file name
-      // on that line and output the modified file name
-
+      String fileName = scnr.next();
+      String targetLine;
+      Scanner scanFile = new Scanner(new FileInputStream(fileName));
+      
+      while (scanFile.hasNextLine()) {
+         targetLine = scanFile.nextLine();
+         
+         if (targetLine.contains("_photo.jpg")) {
+            targetLine = targetLine.replace("_photo.jpg", "_info.txt");
+            System.out.println(targetLine);
+         }
+         
+      }
+      scanFile.close();   
    }
 }
